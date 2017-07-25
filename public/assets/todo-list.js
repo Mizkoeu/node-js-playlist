@@ -11,7 +11,11 @@ $(document).ready(function(){
         data: todo,
         success: function(data){
           //do something with the data via front-end framework
-          location.reload();
+          //location.reload();
+          var ul = document.getElementById('chores');
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(data.item));
+          ul.appendChild(li);
         }
       });
 
@@ -20,13 +24,17 @@ $(document).ready(function(){
   });
 
   $('li').on('click', function(){
+      $(this).attr('id', 'toDelete');
       var item = $(this).text().replace(/ /g, "-");
+      //console.log(item);
+      //$(this).remove();
       $.ajax({
         type: 'DELETE',
         url: '/todo/' + item,
         success: function(data){
           //do something with the data via front-end framework
-          location.reload();
+          //location.reload();
+          $('#toDelete').remove();
         }
       });
   });

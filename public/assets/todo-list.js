@@ -12,6 +12,7 @@ $(document).ready(function(){
         success: function(data){
           //do something with the data via front-end framework
           //location.reload();
+          $('#textInput')[0].reset();
           var ul = document.getElementById('chores');
           var li = document.createElement('li');
           li.appendChild(document.createTextNode(data.item));
@@ -23,18 +24,17 @@ $(document).ready(function(){
 
   });
 
-  $('li').on('click', function(){
-      $(this).attr('id', 'toDelete');
+  $('#chores').on('click', 'li', function(){
+      $(this).attr('id', 'deleteMe');
       var item = $(this).text().replace(/ /g, "-");
-      //console.log(item);
-      //$(this).remove();
+      console.log(item);
       $.ajax({
         type: 'DELETE',
         url: '/todo/' + item,
         success: function(data){
           //do something with the data via front-end framework
           //location.reload();
-          $('#toDelete').remove();
+          $('#deleteMe').remove();
         }
       });
   });

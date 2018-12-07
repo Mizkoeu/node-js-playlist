@@ -18,7 +18,7 @@ var todoSchema = new mongoose.Schema({
   item: String
 });
 // capitalize first letter because it's the model - based on Schema
-var Todo = mongoose.model('Mike', todoSchema);
+var Todo = mongoose.model('flashPartyUser', todoSchema);
 // var itemOne = Todo({item: 'get tutorials'}).save(function(err) {
 //   if (err) throw err;
 //   console.log('Item saved');
